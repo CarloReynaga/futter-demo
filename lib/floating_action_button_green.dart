@@ -10,12 +10,18 @@ class FloatingActionButtonGreen extends StatefulWidget {
 }
 
 class _FloatingActionButtonGreen extends State<FloatingActionButtonGreen>{
+  bool _pressed = false;
+
   void onPressedFav(){
+
+    setState(() {
+      _pressed = !this._pressed;
+    });
+
     Scaffold.of(context).showSnackBar(
         SnackBar(
           content: Text("Agregaste a favorito"),
         )
-            
     );
   }
 
@@ -28,7 +34,7 @@ class _FloatingActionButtonGreen extends State<FloatingActionButtonGreen>{
       tooltip: "Fav",
       onPressed: onPressedFav,
       child: Icon(
-        Icons.favorite_border
+        this._pressed ? Icons.favorite : Icons.favorite_border
       ),
 
     );
